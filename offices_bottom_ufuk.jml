@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<JCSDataFile xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" >
+<JCSGMLInputTemplate>
+<CollectionElement>featureCollection</CollectionElement>
+<FeatureElement>feature</FeatureElement>
+<GeometryElement>geometry</GeometryElement>
+<CRSElement>boundedBy</CRSElement>
+<ColumnDefinitions>
+</ColumnDefinitions>
+</JCSGMLInputTemplate>
+
+<featureCollection>
+  <gml:boundedBy>
+    <gml:Box>
+      <gml:coordinates decimal="." cs="," ts=" ">153.43,60.36 297.62,122.90</gml:coordinates>
+    </gml:Box>
+  </gml:boundedBy>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          160.22919830431624,122.89139732388709 
+          171.7874720044629,118.81200660618826 
+          164.98848747496487,94.90224434412016 
+          153.43021377481818,98.1884202000442 
+          160.2473378875471,122.8970631443283 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          191.33538364056105,114.10265450197144 
+          202.93752175702977,110.4479809952838 
+          196.0342495777309,86.1415016412818 
+          184.4901221518445,89.56413238564008 
+          191.45140502172572,114.10265450197144 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          221.8671495439413,106.17725985201776 
+          234.16312948820658,102.18589463450756 
+          227.21042878673722,77.46518102928317 
+          215.75134800098215,80.81277766332398 
+          221.73839582724744,103.85969295152798 
+          221.8671495439413,106.17725985201776 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          254.3231411672572,100.08129690745956 
+          265.7779520593463,96.75570664846595 
+          258.38775148380495,68.85769947579733 
+          246.68660057253118,72.18328973479095 
+          254.3281521933728,100.08152468137389 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          285.08972954633805,93.52600530271562 
+          284.5044208709951,85.30664433611977 
+          278.2333078111786,63.50027392357586 
+          288.9227050722295,60.36471739366759 
+          297.61674817788423,90.86513091186626 
+          285.08764704197836,93.5187165374566 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          292.73206690014496,116.02711394539135 
+          293.67500015280376,115.86071395962804 
+          293.66113348732347,115.84684729414776 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+</featureCollection>
+</JCSDataFile>

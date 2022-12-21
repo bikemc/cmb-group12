@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<JCSDataFile xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" >
+<JCSGMLInputTemplate>
+<CollectionElement>featureCollection</CollectionElement>
+<FeatureElement>feature</FeatureElement>
+<GeometryElement>geometry</GeometryElement>
+<CRSElement>boundedBy</CRSElement>
+<ColumnDefinitions>
+</ColumnDefinitions>
+</JCSGMLInputTemplate>
+
+<featureCollection>
+  <gml:boundedBy>
+    <gml:Box>
+      <gml:coordinates decimal="." cs="," ts=" ">120.62,126.74 149.65,159.18</gml:coordinates>
+    </gml:Box>
+  </gml:boundedBy>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          149.65383505056346,153.33340488183921 
+          139.64882652509172,149.80222540226094 
+          120.61969266291999,152.94105160633052 
+          121.91885906944137,159.17953134127472 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          136.11512770209634,150.493570387092 
+          132.26635738517643,129.6213928991802 
+          145.9263567341213,126.73845994979654 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          144.4541300554228,151.62846419849149 
+          140.24269701382744,127.92634330566509 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+</featureCollection>
+</JCSDataFile>

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<JCSDataFile xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" >
+<JCSGMLInputTemplate>
+<CollectionElement>featureCollection</CollectionElement>
+<FeatureElement>feature</FeatureElement>
+<GeometryElement>geometry</GeometryElement>
+<CRSElement>boundedBy</CRSElement>
+<ColumnDefinitions>
+</ColumnDefinitions>
+</JCSGMLInputTemplate>
+
+<featureCollection>
+  <gml:boundedBy>
+    <gml:Box>
+      <gml:coordinates decimal="." cs="," ts=" ">248.12,103.98 312.59,145.18</gml:coordinates>
+    </gml:Box>
+  </gml:boundedBy>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          248.12188936177282,112.63582525580652 
+          250.3359617979569,118.87548393959807 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          278.4144258750188,103.98081482345053 
+          280.6284983112029,110.6230321320028 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          283.34576902833794,135.88358583573952 
+          292.2020587730743,138.90277552144508 
+          297.5359605511542,123.60554778053681 
+          290.28990530546076,121.19019603197235 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          294.5900786427365,132.04596174373873 
+          308.60632273207466,136.99062205383154 
+          312.5868329611229,128.80653875433973 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          308.6063227780778,136.9906219806955 
+          301.6988337421395,145.176035801471 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+</featureCollection>
+</JCSDataFile>
