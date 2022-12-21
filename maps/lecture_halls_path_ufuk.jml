@@ -68,5 +68,26 @@
       </gml:LineString>
     </geometry>
   </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          292.186582148385,138.90305002205776 
+          290.9865583016058,141.9545392324392 
+          302.0717724387194,144.7375249993411 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
+  <feature>
+    <geometry>
+      <gml:LineString>
+        <gml:coordinates>
+          297.53595879418384,123.60555100293705 
+          311.94491485177895,130.12941201774927 
+        </gml:coordinates>
+      </gml:LineString>
+    </geometry>
+  </feature>
 </featureCollection>
 </JCSDataFile>

@@ -12,7 +12,7 @@
 <featureCollection>
   <gml:boundedBy>
     <gml:Box>
-      <gml:coordinates decimal="." cs="," ts=" ">117.68,109.40 290.37,173.12</gml:coordinates>
+      <gml:coordinates decimal="." cs="," ts=" ">117.68,110.60 290.37,173.12</gml:coordinates>
     </gml:Box>
   </gml:boundedBy>
   <feature>
@@ -39,7 +39,7 @@
     <geometry>
       <gml:LineString>
         <gml:coordinates>
-          140.14565695362472,160.1211061798746 
+          140.09525421874537,160.18120200080259 
           148.01113258668786,161.66731079150242 
         </gml:coordinates>
       </gml:LineString>
@@ -79,8 +79,8 @@
     <geometry>
       <gml:LineString>
         <gml:coordinates>
-          202.12829399366083,127.4155173295736 
-          209.45595932702736,144.82712578225187 
+          199.74608702445926,122.94675586367788 
+          212.99692770437238,152.40271320558745 
         </gml:coordinates>
       </gml:LineString>
     </geometry>
@@ -89,8 +89,8 @@
     <geometry>
       <gml:LineString>
         <gml:coordinates>
-          232.44734963905807,119.8525599900898 
-          239.00191266661068,136.72635814307142 
+          230.5748222727977,113.80165673332552 
+          242.52779057932688,145.30124379994365 
         </gml:coordinates>
       </gml:LineString>
     </geometry>
@@ -121,16 +121,6 @@
         <gml:coordinates>
           280.62097943674934,110.59987722245181 
           284.61494870963077,124.25588181885591 
-        </gml:coordinates>
-      </gml:LineString>
-    </geometry>
-  </feature>
-  <feature>
-    <geometry>
-      <gml:LineString>
-        <gml:coordinates>
-          280.5813714619061,110.60894546405403 
-          286.9342556270725,109.39887228973663 
         </gml:coordinates>
       </gml:LineString>
     </geometry>
