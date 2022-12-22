@@ -4,10 +4,12 @@
  */
 package movement;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import core.SettingsError;
 import core.SimClock;
@@ -23,17 +25,24 @@ import core.Coord;
  * paths between two random map nodes and Points Of Interest
  */
 public class FMIFireEscapeMovement extends MapBasedMovement implements
-        SwitchableMovement {
+        SwitchableMovement{
     /** the Dijkstra shortest path finder */
     private DijkstraPathFinder pathFinder;
 
     /** next route's index to give by prototype */
     private Integer nextRouteIndex = 1;
 
+
+    public static final String ROUTE_TYPE_S = "routeType";
+    public static final String ROUTE_FILE_S = "routeFile";
+    private List<MapRoute> allRoutes = null;
+
+    private MapRoute route;
+
     public static final String EXIT_FILE_S = "exit";
     private List<MapNode> Route_exit = null;
 
-
+    private Boolean atExit;
     public static final String CLOSED_EXIT_FILE_S = "closedExit";
     private List<MapNode> Closed_exits = null;
     public int clock_spread;
@@ -48,10 +57,16 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
      */
     public FMIFireEscapeMovement(Settings settings) {
         super(settings);
+        String fileName = settings.getSetting(ROUTE_FILE_S);
+        int type = settings.getInt(ROUTE_TYPE_S);
+        allRoutes = MapRoute.readRoutes(fileName, type, getMap());
+        this.route = this.allRoutes.get(this.nextRouteIndex).replicate();
+
         clock_spread = Integer.parseInt(settings.getSetting(FIRESPREADCLOCK));
         Route_exit = getExitPoints(settings.getSetting(EXIT_FILE_S));
         Closed_exits = getExitPoints(settings.getSetting(CLOSED_EXIT_FILE_S));
         this.pathFinder = new DijkstraPathFinder(getOkMapNodeTypes());
+        atExit = false;
     }
 
     /**
@@ -61,15 +76,23 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
      */
     protected FMIFireEscapeMovement(FMIFireEscapeMovement mbm) {
         super(mbm);
+        this.allRoutes = mbm.allRoutes;
+        this.route = this.allRoutes.get(this.nextRouteIndex).replicate();
+
         this.pathFinder = mbm.pathFinder;
         this.Route_exit = mbm.Route_exit;
         this.Closed_exits = mbm.Closed_exits;
         this.clock_spread = mbm.clock_spread;
+        this.atExit = mbm.atExit;
     }
 
     @Override
     public Path getPath() {
         Path p = new Path(generateSpeed());
+        if(this.atExit) {
+            this.getHost().setName("Safe!");
+            return p;
+        }
         MapNode to = getClosestExit();
         List<MapNode> nodePath = pathFinder.getShortestPath(lastMapNode, to);
         //System.out.println(nodePath.size());
@@ -77,13 +100,16 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
         assert nodePath.size() > 0 : "No path from " + lastMapNode + " to " +
                 to + ". The simulation map isn't fully connected";
 
-        int pathsize = 5;
+        int pathsize = 2;
         if (nodePath.size() > pathsize){
             // because first node in the path is current position, when the pathsize is between 6-7, it will halt where it is
             if(nodePath.size()/4 < 2)pathsize = 2;
             else pathsize = nodePath.size()/4;
         }
-        else pathsize = nodePath.size();
+        else {
+            this.atExit = true;
+            pathsize = nodePath.size();
+        }
 
         for (int i = 0; i < pathsize; i++){
             p.addWaypoint(nodePath.get(i).getLocation());
@@ -97,13 +123,23 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
         return new FMIFireEscapeMovement(this);
     }
 
+    @Override
+    public Coord getInitialLocation() {
+        if (lastMapNode == null) {
+            Random rand = new Random();
+            int siz = rand.nextInt(allRoutes.size());
+            lastMapNode =  this.allRoutes.get(siz).replicate().nextStop();;
+        }
+
+        return lastMapNode.getLocation().clone();
+    }
+
     // function that finds the closest exit point among all the exits
     // distance calculated as [(x1-x2)^2 + (y1-y2)^2]^(1/2)
     public MapNode getClosestExit(){
 
         Boolean isBlockedExit = false;
         current_clock = SimClock.getIntTime();
-
         double distance = 999999999;
         double tempDistance = 0;
         MapNode closestExit = null;

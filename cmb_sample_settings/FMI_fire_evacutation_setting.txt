@@ -1,0 +1,76 @@
+# Settings for map route based movement in a triangle.
+
+Scenario.name = FMIFireEvacuation
+Scenario.endTime = 1000
+Scenario.updateInterval = 0.1
+Scenario.simulateConnections = false
+MovementModel.worldSize = 6000,6000
+Events.nrof = 0
+
+# Communication Interface
+myInterface.type = SimpleBroadcastInterface
+myInterface.transmitRange = 0
+myInterface.transmitSpeed = 0
+
+Group.routeType = 1
+# wkt file that has the exit points where fire spread
+Group.closedExit = data/campus_fmi_map/blocked_exit_points.wkt
+# time when fire will block exits
+Group.spread_begin = 20
+
+# Groups
+Scenario.nrofHostGroups = 3
+
+## People in lecture halls
+Group1.groupID = h
+Group1.nrofHosts = 100
+Group1.nrofInterfaces = 1
+Group1.interface1 = myInterface
+Group1.movementModel = FMIFireEscapeMovement
+# file that contains routes
+Group1.routeFile = data/campus_fmi_map/lecture_halls_path.wkt
+# file that contains exit nodes
+Group1.exit = data/campus_fmi_map/emergency_exit_points_horsaal.wkt
+Group1.router = PassiveRouter
+
+## People in library
+Group2.groupID = l
+Group2.nrofHosts = 20
+Group2.nrofInterfaces = 1
+Group2.interface1 = myInterface
+Group2.movementModel = FMIFireEscapeMovement
+# file that contains routes
+Group2.routeFile = data/campus_fmi_map/library_path.wkt
+# file that contains exit nodes
+Group2.exit = data/campus_fmi_map/emergency_point_library.wkt
+Group2.router = PassiveRouter
+
+## People in magistrale, office, classroom etc
+Group3.groupID = m
+Group3.nrofHosts = 300
+Group3.nrofInterfaces = 1
+Group3.interface1 = myInterface
+Group3.movementModel = FMIFireEscapeMovement
+# file that contains routes
+Group3.routeFile = data/campus_fmi_map/map_combined.wkt
+# file that contains exit nodes
+Group3.exit = data/campus_fmi_map/emergency_exit_points.wkt
+Group3.router = PassiveRouter
+
+
+## Map for the FMI campus
+MapBasedMovement.nrofMapFiles = 7
+MapBasedMovement.mapFile1 = data/campus_fmi_map/entrance_path.wkt
+MapBasedMovement.mapFile2 = data/campus_fmi_map/lecture_halls_path.wkt
+MapBasedMovement.mapFile3 = data/campus_fmi_map/library_path.wkt
+MapBasedMovement.mapFile4 = data/campus_fmi_map/magistrale_new_path.wkt
+MapBasedMovement.mapFile5 = data/campus_fmi_map/offices_bottom_path.wkt
+MapBasedMovement.mapFile6 = data/campus_fmi_map/offices_up_path.wkt
+MapBasedMovement.mapFile7 = data/campus_fmi_map/tum_fmi.wkt
+
+
+# Reports
+Report.nrofReports = 1
+Report.report1 = FlightLengthReport
+
+Report.reportDir = reports
