@@ -30,8 +30,11 @@ Group1.exit = data/cluster/exitPOI.wkt
 Group1.router = PassiveRouter
 
 Group2.groupID = ap
-Group2.nrofHosts = 25
-Group2.exit = data/cluster/exitPOI.wkt
+Group2.nrofHosts = 21
+Group2.nrofInterfaces = 1
+Group2.interface1 = myInterface
+Group2.movementModel = FMIAPMovement
+Group2.exit = data/maps_wkt/emergency_exits_bottom.wkt
 Group2.router = PassiveRouter
 Group2.speed = 0, 0
 

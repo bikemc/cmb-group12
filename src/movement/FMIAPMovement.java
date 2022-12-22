@@ -7,19 +7,24 @@ import core.Coord;
 import core.Settings;
 
 public class FMIAPMovement extends MapBasedMovement implements SwitchableMovement{
-    private List<MapNode> Route_exit = null;
+    private List<MapNode> exits = null;
     public static final String EXIT_FILE = "exit";
     public int clock_spread;
     public static final String FIRESPREADCLOCK = "spread_begin";
     int current_clock = 0;
     int exit_counter = 0;
 
-    List<MapNode> exits = null;
-
     public FMIAPMovement(Settings settings){
         super(settings);
         clock_spread = Integer.parseInt(settings.getSetting(FIRESPREADCLOCK));
         exits = FMIFireEscapeMovement.getExitPoints(EXIT_FILE, getMap(), getOkMapNodeTypes());
+    }
+
+    protected FMIAPMovement(FMIAPMovement mbm) {
+        super(mbm);
+        this.exits = mbm.exits;
+        // this.Closed_exits = mbm.Closed_exits;
+        this.clock_spread = mbm.clock_spread;
     }
 
     @Override
@@ -36,8 +41,8 @@ public class FMIAPMovement extends MapBasedMovement implements SwitchableMovemen
     }
 
     @Override
-    public MapBasedMovement replicate() {
-        return null;
+    public FMIAPMovement replicate() {
+        return new FMIAPMovement(this);
     }
 
     @Override
