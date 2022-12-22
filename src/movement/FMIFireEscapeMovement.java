@@ -102,7 +102,6 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
 
         int pathsize = 2;
         if (nodePath.size() > pathsize){
-            // because first node in the path is current position, when the pathsize is between 6-7, it will halt where it is
             if(nodePath.size()/4 < 2)pathsize = 2;
             else pathsize = nodePath.size()/4;
         }
