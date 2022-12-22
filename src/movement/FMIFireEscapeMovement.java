@@ -17,6 +17,7 @@ import movement.map.MapNode;
 import movement.map.MapRoute;
 import core.Settings;
 import core.Coord;
+import movement.map.SimMap;
 
 /**
  * Map based movement model that uses Dijkstra's algorithm to find shortest
@@ -49,8 +50,8 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
     public FMIFireEscapeMovement(Settings settings) {
         super(settings);
         clock_spread = Integer.parseInt(settings.getSetting(FIRESPREADCLOCK));
-        Route_exit = getExitPoints(settings.getSetting(EXIT_FILE_S));
-        Closed_exits = getExitPoints(settings.getSetting(CLOSED_EXIT_FILE_S));
+        Route_exit = getExitPoints(settings.getSetting(EXIT_FILE_S), getMap(), getOkMapNodeTypes());
+        Closed_exits = getExitPoints(settings.getSetting(CLOSED_EXIT_FILE_S), getMap(), getOkMapNodeTypes());
         this.pathFinder = new DijkstraPathFinder(getOkMapNodeTypes());
     }
 
@@ -130,10 +131,10 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
     // function that reads all the points from wkt file.
     // original function from  PointOfInterest.java was readPoisOf() which was private
     // we copied and altered the function to our liking
-    public List<MapNode> getExitPoints(String filename){
+    public static List<MapNode> getExitPoints(String filename, SimMap map, int[] okMapNodeTypes){
 
         String exit_fileName = filename;
-        Coord curOffSet = getMap().getOffset();
+        Coord curOffSet = map.getOffset();
 
         List<MapNode> nodes = new ArrayList<MapNode>();
         WKTReader reader = new WKTReader();
@@ -156,7 +157,7 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
         }
 
         for (Coord c : coords) {
-            if (getMap().isMirrored()) { // mirror POIs if map data is also mirrored
+            if (map.isMirrored()) { // mirror POIs if map data is also mirrored
                 c.setLocation(c.getX(), -c.getY()); // flip around X axis
             }
 
@@ -164,9 +165,9 @@ public class FMIFireEscapeMovement extends MapBasedMovement implements
             c.translate(curOffSet.getX(), curOffSet.getY());
 
 
-            MapNode node = getMap().getNodeByCoord(c);
+            MapNode node = map.getNodeByCoord(c);
             if (node != null) {
-                if (getOkMapNodeTypes() != null && !node.isType(getOkMapNodeTypes())) {
+                if (okMapNodeTypes != null && !node.isType(okMapNodeTypes)) {
                     throw new SettingsError("POI " + node + " from file " +
                             poiFile + " is on a part of the map that is not "+
                             "allowed for this movement model");
