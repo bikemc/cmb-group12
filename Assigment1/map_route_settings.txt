@@ -1,0 +1,53 @@
+# Settings for map route based movement in a triangle.
+
+Scenario.name = MapRouteMovement
+Scenario.endTime = 6000
+Scenario.updateInterval = 0.1
+Scenario.simulateConnections = false
+MovementModel.worldSize = 6000,6000
+Events.nrof = 0
+
+# Communication Interface
+myInterface.type = SimpleBroadcastInterface
+myInterface.transmitRange = 0
+myInterface.transmitSpeed = 0
+# Groups
+Scenario.nrofHostGroups = 1
+
+Group.spread_begin = 5000
+# wkt file that has the exit points where fire spread
+Group.closedExit = data/maps_wkt/emergency_exit_points.wkt
+
+Group1.groupID = x
+Group1.nrofHosts = 100
+Group1.nrofInterfaces = 1
+Group1.interface1 = myInterface
+Group1.movementModel = FMIFireEscapeMovement
+# file that contains routes
+Group1.routeFile = data/maps_wkt/offices_bottom_path.wkt
+Group2.routeFile = data/maps_wkt/offices_up_path.wkt
+Group3.routeFile = data/maps_wkt/magistrale_new_path.wkt
+Group4.routeFile = data/maps_wkt/lecture_halls_path.wkt
+Group5.routeFile = data/maps_wkt/library_path.wkt
+# file that contains exit nodes
+Group1.exit =  data/maps_wkt/emergency_exit_points.wkt
+Group2.exit =  data/maps_wkt/emergency_exit_points.wkt
+Group3.exit =  data/maps_wkt/emergency_exit_points.wkt
+Group4.exit =  data/maps_wkt/emergency_exit_höörsal.wkt
+Group5.exit =  data/maps_wkt/emergency_exit_library.wkt
+Group1.router = PassiveRouter
+
+## Map based movement -movement model specific settings
+MapBasedMovement.nrofMapFiles = 5
+MapBasedMovement.mapFile1 = data/maps_wkt/offices_bottom_path.wkt
+MapBasedMovement.mapFile2 = data/maps_wkt/offices_up_path.wkt
+MapBasedMovement.mapFile3 = data/maps_wkt/magistrale_new_path.wkt
+MapBasedMovement.mapFile4 = data/maps_wkt/lecture_halls_path.wkt
+MapBasedMovement.mapFile5 = data/maps_wkt/library_path.wkt
+
+
+# Reports
+Report.nrofReports = 1
+Report.report1 = FlightLengthReport
+
+Report.reportDir = reports
